@@ -35,39 +35,37 @@ export const year = 2023
 
 {/* lint disable heading-style */}
 
-Markdown for the\
-**component era**
+**컴포넌트 시대**를 위한\
+마크다운
 =================
 
-MDX lets you use JSX in your markdown content.
-You can import components, such as interactive charts or alerts, and embed them
-within your content.
-This makes writing long-form content with components a blast. {/* more */}
+MDX를 사용하면 마크다운 콘텐츠에 JSX를 사용할 수 있습니다.
+인터랙티브 차트나 알림과 같은 컴포넌트를 가져와 콘텐츠 내에 임베드할 수 있습니다.
+이를 통해 컴포넌트와 함께 긴 형식의 콘텐츠를 작성하는 것이 즐거워집니다. {/* more */}
 🚀
-[Continue reading »][what]
+[계속 읽기 »][what]
 
 <div className="card big">
-  ## New: MDX 3!
+  ## 새소식: MDX 3!
 
-  A small major this time, nothing big, which is also nice sometimes!
-  This mainly drops support for old Node (use 16 or later), adds modern ES2024
-  support in MDX, supports `await` in MDX (if your framework does too), and
-  removes several deprecated options.
+  이번에는 작은 메이저 업데이트로, 큰 변화는 없습니다. 때로는 이런 것도 좋죠!
+  주로 오래된 Node 지원을 중단하고(16 이상 사용), MDX에 최신 ES2024 지원을 추가하며,
+  MDX에서 `await` 지원(프레임워크가 지원하는 경우), 그리고 몇 가지 deprecated된 옵션을 제거했습니다.
 
-  [Continue reading »][v3]
+  [계속 읽기 »][v3]
 </div>
 
-## What does MDX do?
+## MDX는 무엇을 하나요?
 
 <div className="big-columns">
   <div>
-    You write markdown with embedded components through JSX:
+    JSX를 통해 임베디드 컴포넌트와 함께 마크다운을 작성합니다:
 
     ```mdx path="example.mdx"
     import {Chart} from './snowfall.js'
     export const year = 2023
 
-    # Last year’s snowfall
+    # Last year's snowfall
 
     In {year}, the snowfall was above average.
     It was followed by a warm spring which caused
@@ -78,17 +76,15 @@ This makes writing long-form content with components a blast. {/* more */}
   </div>
 
   <div>
-    It gets compiled to JavaScript that you can use in any framework that
-    supports JSX:
+    이는 JSX를 지원하는 모든 프레임워크에서 사용할 수 있는 JavaScript로 컴파일됩니다:
 
     {/* lint disable */}
 
     <div className="home-preview">
-      # Last year’s snowfall
+      # 작년의 강설량
 
-      In {year}, the snowfall was above average.
-      It was followed by a warm spring which caused flood conditions in many of
-      the nearby rivers.
+      {year}년에는 강설량이 평균 이상이었습니다.
+      이어서 따뜻한 봄이 찾아와 주변의 많은 강들에 홍수 상황을 초래했습니다.
 
       <Chart year={year} color="#fcb32c" />
     </div>
@@ -97,34 +93,28 @@ This makes writing long-form content with components a blast. {/* more */}
   </div>
 </div>
 
-We made an interactive playground where you can try MDX out and see what it
-turns into.
-[Play »][playground]
+MDX를 시도해보고 어떻게 변환되는지 볼 수 있는 인터랙티브 플레이그라운드를 만들었습니다.
+[플레이 »][playground]
 
-## Get started
+## 시작하기
 
-There are integrations for most bundlers, frameworks, and editors.
-Whether you build with Docusaurus, Next.js, or Vite.
-You prefer Rollup, esbuild, or webpack.
-You’re using React, Preact, or Vue.
-[Get started »][getting-started]
+대부분의 번들러, 프레임워크, 에디터에 대한 통합이 있습니다.
+Docusaurus, Next.js, 또는 Vite로 빌드하든,
+Rollup, esbuild, 또는 webpack을 선호하든,
+React, Preact, 또는 Vue를 사용하든 상관없습니다.
+[시작하기 »][getting-started]
 
-## MDX in short
+## MDX 요약
 
 <div className="emoji-list">
-  * ❤️ **Powerful**: MDX blends markdown and JSX syntax to fit perfectly in
-    JSX-based projects
-  * 💻 **Everything is a component**: Use existing components in your
-    MDX and import other MDX files as components
-  * 🔧 **Customizable**: Decide which component is rendered for each markdown
-    construct (`{h1: MyHeading}`)
-  * 📚 **Markdown-based**: The simplicity and elegance of markdown remains,
-    you use JSX only when you want to
-  * 🔥 **Blazingly blazing fast**: MDX has no runtime, all compilation occurs
-    during the build stage
+  * ❤️ **강력함**: MDX는 마크다운과 JSX 구문을 혼합하여 JSX 기반 프로젝트에 완벽하게 맞춥니다
+  * 💻 **모든 것이 컴포넌트**: MDX에서 기존 컴포넌트를 사용하고 다른 MDX 파일을 컴포넌트로 가져옵니다
+  * 🔧 **커스터마이징 가능**: 각 마크다운 구조에 대해 렌더링될 컴포넌트를 결정합니다 (`{h1: MyHeading}`)
+  * 📚 **마크다운 기반**: 마크다운의 단순함과 우아함은 그대로 유지되며, 원할 때만 JSX를 사용합니다
+  * 🔥 **엄청나게 빠름**: MDX는 런타임이 없으며, 모든 컴파일은 빌드 단계에서 이루어집니다
 </div>
 
-> lol mdx is so good
+> mdx 정말 좋네요 ㅋㅋ
 >
 > — [**@dan\_abramov**][quote]
 

@@ -9,17 +9,22 @@ export const info = {
 }
 export const navSortSelf = 6
 
-# 필요에 따른 MDX
+# MDX on demand
 
-이 가이드는 `@mdx-js/mdx`를 사용하여 서버에서 MDX를 컴파일하고 클라이언트에서 결과를 실행하는 방법을 보여줍니다. {/* more */}
-Next.js와 Remix와 같은 일부 프레임워크는 서버와 클라이언트 간의 작업을 쉽게 분할할 수 있게 해줍니다.
-이를 사용하면 예를 들어 빌드 시간 대신 서버에서 필요에 따라 대부분의 작업을 수행한 다음, 결과 데이터를 클라이언트에 전달하여 최종적으로 사용할 수 있습니다.
+This guide shows how to use `@mdx-js/mdx` to compile MDX on the server and run
+the result on clients. {/* more */}
+Some frameworks, such as Next.js and Remix, make it easy to split work between
+servers and clients.
+Using that it’s possible to for example do most of the work on demand on the
+server instead of at build time, then pass the resulting data to clients, where
+they finally use it.
 
-이는 사람들이 때때로 [`mdx-bundler`][mdx-bundler] 또는 [`next-mdx-remote`][next-mdx-remote]를 사용하는 것과 유사하지만, MDX도 이를 지원합니다.
+This is similar to what people sometimes use [`mdx-bundler`][mdx-bundler] or
+[`next-mdx-remote`][next-mdx-remote] for, but MDX also supports it.
 
-## 간단한 예제
+## Quick example
 
-서버에서:
+On the server:
 
 ```js twoslash path="server.js"
 import {compile} from '@mdx-js/mdx'
@@ -31,7 +36,7 @@ const code = String(await compile('# hi', {
 // To do: send `code` to the client somehow.
 ```
 
-클라이언트에서:
+On the client:
 
 ```js twoslash path="client.js"
 import {run} from '@mdx-js/mdx'
@@ -43,19 +48,24 @@ const code = '' // To do: get `code` from server somehow.
 const {default: Content} = await run(code, {...runtime, baseUrl: import.meta.url})
 ```
 
-이제 `Content`는 프레임워크에서 정상적으로 사용할 수 있는 `MDXContent` 컴포넌트입니다 ([§ MDX 사용하기][use] 참조).
+`Content` is now an `MDXContent` component that you can use like normal in your
+framework (see [§ Using MDX][use]).
 
-`@mdx-js/mdx`의 API 문서에서 [`compile`][compile]과 [`run`][run]에 대한 더 자세한 정보를 확인할 수 있습니다.
-다른 사용 사례의 경우, 컴파일과 실행을 한 번에 수행하는 [`evaluate`][eval]를 사용할 수도 있습니다.
+More information is available in the API docs of `@mdx-js/mdx` for
+[`compile`][compile] and [`run`][run].
+For other use cases, you can also use [`evaluate`][eval], which both compiles
+and runs in one.
 
 <Note type="info">
-  **참고**: MDX는 번들러가 아닙니다 (esbuild, webpack, Rollup이 번들러입니다):
-  MDX 문자열 내에서 서버의 다른 코드를 가져와서 깔끔하게 축소된 번들을 출력하는 등의 작업은 할 수 없습니다.
+  **Note**: MDX is not a bundler (esbuild, webpack, and Rollup are bundlers):
+  you can’t import other code from the server within the string of MDX and get a
+  nicely minified bundle out or so.
 </Note>
 
-## Next.js 예제
+## Next.js example
 
-일부 프레임워크에서는 서버와 클라이언트 코드를 한 파일에 작성할 수 있습니다. Next.js가 그 예입니다.
+Some frameworks let you write the server and client code in one file, such as
+Next.
 
 ```js twoslash path="pages/hello.js"
 /**

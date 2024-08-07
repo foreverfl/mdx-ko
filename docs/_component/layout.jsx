@@ -66,9 +66,9 @@ export function Layout(properties) {
   let timeLabel
 
   if (metaTime.length > 1 && metaTime[0] !== metaTime[1]) {
-    timeLabel = metaTime[0] + '-' + metaTime[1] + ' minutes'
+    timeLabel = metaTime[0] + '-' + metaTime[1] + '분'
   } else if (metaTime[0]) {
-    timeLabel = metaTime[0] + ' minute' + (metaTime[0] > 1 ? 's' : '')
+    timeLabel = metaTime[0] + '분'
   }
 
   const up =
@@ -84,7 +84,7 @@ export function Layout(properties) {
 
   const back = previous ? (
     <div>
-      Previous:
+      이전:
       <br />
       <a rel="prev" href={previous.name}>
         {entryToTitle(previous)}
@@ -94,7 +94,7 @@ export function Layout(properties) {
 
   const forward = next ? (
     <div>
-      Next:
+      다음:
       <br />
       <a rel="next" href={next.name}>
         {entryToTitle(next)}
@@ -104,16 +104,16 @@ export function Layout(properties) {
 
   const edit = (
     <div>
-      Found a typo? Other suggestions?
+      오타를 찾으셨나요? 다른 제안 사항이 있으신가요?
       <br />
-      <a href={ghUrl.href}>Edit this page on GitHub</a>
+      <a href={ghUrl.href}>GitHub에서 이 페이지 수정하기</a>
     </div>
   )
 
   const published =
     meta.published && typeof meta.published === 'object' ? (
       <>
-        Published on{' '}
+        게시일:{' '}
         <time dateTime={meta.published.toISOString()}>
           {dateTimeFormat.format(meta.published)}
         </time>
@@ -123,7 +123,7 @@ export function Layout(properties) {
   const modified =
     meta.modified && typeof meta.modified === 'object' ? (
       <>
-        Modified on{' '}
+        수정일:{' '}
         <time dateTime={meta.modified.toISOString()}>
           {dateTimeFormat.format(meta.modified)}
         </time>
@@ -139,7 +139,7 @@ export function Layout(properties) {
       </div>
     ) : undefined
 
-  const readingTime = timeLabel ? <>{timeLabel} read</> : undefined
+  const readingTime = timeLabel ? <>{timeLabel} 소요</> : undefined
 
   const creditsList = metaAuthors.map(function (d, i) {
     const href = d.github
@@ -155,7 +155,8 @@ export function Layout(properties) {
     )
   })
 
-  const credits = creditsList.length > 0 ? <>By {creditsList}</> : undefined
+  const credits =
+    creditsList.length > 0 ? <>작성자: {creditsList}</> : undefined
 
   const info =
     readingTime || credits ? (

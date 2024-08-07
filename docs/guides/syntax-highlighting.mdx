@@ -9,29 +9,24 @@ export const info = {
 }
 export const navSortSelf = 4
 
-# Syntax highlighting
+# 구문 강조
 
-This guide explores how to apply syntax highlighting to code
-blocks. {/* more */}
-MDX supports standard markdown syntax ([CommonMark][]).
-It does not apply syntax highlighting to code blocks by default.
+이 가이드는 코드 블록에 구문 강조를 적용하는 방법을 탐구합니다. {/* more */}
+MDX는 표준 마크다운 구문([CommonMark][])을 지원합니다.
+기본적으로 코드 블록에 구문 강조를 적용하지 않습니다.
 
-There are two ways to accomplish syntax highlighting: at compile time or at
-runtime.
-Doing it at compile time means the effort is spent upfront so that readers will
-have a fast experience as no extra code is sent to them (syntax highlighting
-needs a *lot* of code to work).
-Doing it at runtime gives more flexibility by moving the work to the client.
-This can result in a slow experience for readers though.
-It also depends on what framework you use (as in it’s specific to React, Preact,
-Vue, etc.)
+구문 강조를 구현하는 방법에는 두 가지가 있습니다: 컴파일 시간 또는 런타임에서 수행하는 것입니다.
+컴파일 시간에 수행하면 미리 작업을 수행하여 독자들에게 추가 코드를 보내지 않기 때문에 빠른 경험을 제공할 수 있습니다(구문 강조는 작동하기 위해 *많은* 코드가 필요합니다).
+런타임에 수행하면 작업을 클라이언트로 이동시켜 더 많은 유연성을 제공합니다.
+하지만 이는 독자들에게 느린 경험을 제공할 수 있습니다.
+또한 사용하는 프레임워크에 따라 다릅니다(React, Preact, Vue 등에 특화됨).
 
-## Syntax highlighting at compile time
+## 컴파일 시간에 구문 강조
 
-Use for example [`rehype-starry-night`][rehype-starry-night] (`starry-night`),
+예를 들어 [`rehype-starry-night`][rehype-starry-night] (`starry-night`),
 [`rehype-highlight`][rehype-highlight] (`lowlight`, `highlight.js`),
-or [`@mapbox/rehype-prism`][rehype-prism] (`refractor`, `prism`)
-by doing something like this:
+또는 [`@mapbox/rehype-prism`][rehype-prism] (`refractor`, `prism`)을
+다음과 같이 사용할 수 있습니다:
 
 ```js twoslash path="example.js"
 /// <reference types="node" />
@@ -49,7 +44,7 @@ console.log(
 ```
 
 <details>
-  <summary>Expand equivalent JSX</summary>
+  <summary>동등한 JSX 펼치기</summary>
 
   ```jsx path="output.jsx"
   <>
@@ -63,17 +58,16 @@ console.log(
 </details>
 
 <Note type="important">
-  **Important**: you must likely also include CSS somewhere on the page.
-  See the documentation of the plugin you’re using for more information.
+  **중요**: 페이지 어딘가에 CSS도 포함해야 할 가능성이 높습니다.
+  자세한 정보는 사용 중인 플러그인의 문서를 참조하세요.
 </Note>
 
-## Syntax highlighting at run time
+## 런타임에 구문 강조
 
-Use for example
-[`react-syntax-highlighter`][react-syntax-highlighter],
-by doing something like this:
+예를 들어 [`react-syntax-highlighter`][react-syntax-highlighter]를
+다음과 같이 사용할 수 있습니다:
 
-{/* Note: `react-syntax-highlighter` doesn’t seem actively maintained so no twoslash to check this example. */}
+{/* Note: `react-syntax-highlighter` doesn't seem actively maintained so no twoslash to check this example. */}
 
 ```jsx path="example.jsx"
 import SyntaxHighlighter from 'react-syntax-highlighter'
@@ -90,7 +84,7 @@ function code({className, ...properties}) {
 ```
 
 <details>
-  <summary>Expand equivalent JSX</summary>
+  <summary>동등한 JSX 펼치기</summary>
 
   ```jsx path="output.jsx"
   <>
@@ -118,9 +112,9 @@ function code({className, ...properties}) {
   ```
 </details>
 
-## Syntax highlighting with the `meta` field
+## `meta` 필드를 사용한 구문 강조
 
-Markdown supports a meta string for code:
+마크다운은 코드를 위한 메타 문자열을 지원합니다:
 
 ````mdx path="example.mdx"
 ```js filename="index.js"
@@ -128,23 +122,18 @@ console.log(1)
 ```
 ````
 
-The `meta` part is everything after the language (in this case, `js`).
-This is a *hidden* part of markdown: it’s normally ignored.
-But as the above example shows, it’s a useful place to put some extra fields.
+`meta` 부분은 언어(이 경우 `js`) 다음에 오는 모든 것입니다.
+이는 마크다운의 *숨겨진* 부분입니다: 일반적으로 무시됩니다.
+하지만 위의 예시에서 볼 수 있듯이, 추가 필드를 넣기에 유용한 위치입니다.
 
-`@mdx-js/mdx` doesn’t know whether you’re handling code as a component or what
-the format of that meta string is, so it defaults to how markdown handles it:
-`meta` is ignored.
+`@mdx-js/mdx`는 코드를 컴포넌트로 처리하는지 또는 해당 메타 문자열의 형식이 무엇인지 알 수 없기 때문에, 마크다운이 처리하는 방식으로 기본 설정됩니다: `meta`는 무시됩니다.
 
-But what if you want to access `meta` at runtime?
-That’s exactly what the rehype plugin
-[`rehype-mdx-code-props`][rehype-mdx-code-props] does.
-It lets you type JSX attributes in the `meta` part which you can access by
-with a component for `pre`.
+그렇다면 런타임에 `meta`에 접근하고 싶다면 어떻게 해야 할까요?
+이것이 바로 rehype 플러그인 [`rehype-mdx-code-props`][rehype-mdx-code-props]가 하는 일입니다.
+이를 통해 `meta` 부분에 JSX 속성을 입력할 수 있으며, `pre`에 대한 컴포넌트로 접근할 수 있습니다.
 
-That plugin, like all rehype plugins, can be passed as
-[`rehypePlugins` in `ProcessorOptions`][processor-options].
-More info on plugins is available in [§ Extending MDX][extend]
+이 플러그인은 다른 모든 rehype 플러그인과 마찬가지로 [`ProcessorOptions`의 `rehypePlugins`][processor-options]로 전달될 수 있습니다.
+플러그인에 대한 자세한 정보는 [§ MDX 확장하기][extend]에서 확인할 수 있습니다.
 
 [commonmark]: https://spec.commonmark.org/current/
 

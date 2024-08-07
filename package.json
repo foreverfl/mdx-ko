@@ -219,5 +219,9 @@
       "react/jsx-no-bind": "off",
       "react/prop-types": "off"
     }
+  },
+  "dependencies": {
+    "concurrently": "^8.2.2",
+    "nodemon": "^3.1.4"
   }
 }

@@ -8,15 +8,11 @@ export const info = {
 }
 export const navSortSelf = 4
 
-# Components
+# 컴포넌트
 
-A great thing about MDX is that you can write markdown and specify a component
-to be used instead of an HTML element. {/* more */}
-The following table lists those HTML elements that can be overwritten,
-the needed markdown,
-and what the normal JSX equivalent would be.
-But, taking the first row for `a` as an example, you can replace that hyperlink
-with `<FancyLink>` by doing:
+MDX의 훌륭한 점은 마크다운을 작성하고 HTML 요소 대신 사용할 컴포넌트를 지정할 수 있다는 것입니다. {/* more */}
+다음 표는 덮어쓸 수 있는 HTML 요소, 필요한 마크다운, 그리고 일반적으로 대응되는 JSX 컴포넌트를 나열합니다.
+하지만 첫 번째 행의 `a`를 예로 들면, 다음과 같이 하여 해당 하이퍼링크를 `<FancyLink>`로 대체할 수 있습니다:
 
 ```tsx
 import Readme from './readme.md' // Assumes an integration is used to compile MDX -> JS.
@@ -25,15 +21,15 @@ import {FancyLink} from './components/fancy-link.js'
 <Readme components={{a: FancyLink}} />
 ```
 
-More information on how to use markdown can be found in [CommonMark][].
+마크다운 사용 방법에 대한 자세한 정보는 [CommonMark][]에서 찾을 수 있습니다.
 
 <div className="full-bleed">
   <table>
     <thead>
       <tr>
-        <th scope="col">Name</th>
-        <th scope="col">Markdown syntax</th>
-        <th scope="col">Equivalent JSX</th>
+        <th scope="col">이름</th>
+        <th scope="col">마크다운 문법</th>
+        <th scope="col">동등한 JSX</th>
       </tr>
     </thead>
 
@@ -61,7 +57,7 @@ More information on how to use markdown can be found in [CommonMark][].
 
         <td>
           ```mdx chrome=no
-          > A greater than…
+          > 인용구...
           ```
         </td>
 
@@ -69,7 +65,7 @@ More information on how to use markdown can be found in [CommonMark][].
           ```tsx chrome=no
           <>
             <blockquote>
-              <p>A greater than…</p>
+              <p>인용구...</p>
             </blockquote>
           </>
           ```
@@ -81,8 +77,8 @@ More information on how to use markdown can be found in [CommonMark][].
 
         <td>
           ```mdx chrome=no
-          A backslash\
-          before a line break…
+          줄 바꿈 전에\
+          백슬래시...
           ```
         </td>
 
@@ -90,8 +86,8 @@ More information on how to use markdown can be found in [CommonMark][].
           ```tsx chrome=no
           <>
             <p>
-              A backslash<br />
-              before a line break…
+              줄 바꿈 전에<br />
+              백슬래시...
             </p>
           </>
           ```
@@ -103,10 +99,10 @@ More information on how to use markdown can be found in [CommonMark][].
 
         <td>
           ````mdx chrome=no
-          Some `backticks` for inline.
+          인라인은 `백틱`을 사용합니다.
 
           ```tsx
-          backtick.fences('for blocks')
+          backtick.fences('블록용')
           ```
           ````
         </td>
@@ -115,9 +111,9 @@ More information on how to use markdown can be found in [CommonMark][].
           ```tsx chrome=no
           <>
             <p>
-              Some <code>backticks</code> for inline.
+              인라인은 <code>백틱</code>을 사용합니다.
             </p>
-            <pre><code className="language-javascript">backtick.fences('for blocks')
+            <pre><code className="language-javascript">backtick.fences('블록용')
             </code></pre>
           </>
           ```
@@ -129,14 +125,14 @@ More information on how to use markdown can be found in [CommonMark][].
 
         <td>
           ```mdx chrome=no
-          Some *asterisks* for emphasis.
+          강조를 위해 *별표*를 사용합니다.
           ```
         </td>
 
         <td>
           ```tsx chrome=no
           <>
-            <p>Some <em>asterisks</em> for emphasis.</p>
+            <p>강조를 위해 <em>별표</em>를 사용합니다.</p>
           </>
           ```
         </td>
@@ -147,14 +143,14 @@ More information on how to use markdown can be found in [CommonMark][].
 
         <td>
           ```mdx chrome=no
-          # One number sign…
+          # 숫자 기호 하나...
           ```
         </td>
 
         <td>
           ```tsx chrome=no
           <>
-            <h1>One number sign…</h1>
+            <h1>숫자 기호 하나...</h1>
           </>
           ```
         </td>
@@ -165,14 +161,14 @@ More information on how to use markdown can be found in [CommonMark][].
 
         <td>
           ```mdx chrome=no
-          ## Two number signs…
+          ## 숫자 기호 둘...
           ```
         </td>
 
         <td>
           ```tsx chrome=no
           <>
-            <h2>Two number signs…</h2>
+            <h2>숫자 기호 둘...</h2>
           </>
           ```
         </td>
@@ -183,14 +179,14 @@ More information on how to use markdown can be found in [CommonMark][].
 
         <td>
           ```mdx chrome=no
-          ### Three number signs…
+          ### 숫자 기호 셋...
           ```
         </td>
 
         <td>
           ```tsx chrome=no
           <>
-            <h3>Three number signs…</h3>
+            <h3>숫자 기호 셋...</h3>
           </>
           ```
         </td>
@@ -201,14 +197,14 @@ More information on how to use markdown can be found in [CommonMark][].
 
         <td>
           ```mdx chrome=no
-          #### Four number signs…
+          #### 숫자 기호 넷...
           ```
         </td>
 
         <td>
           ```tsx chrome=no
           <>
-            <h4>Four number signs…</h4>
+            <h4>숫자 기호 넷...</h4>
           </>
           ```
         </td>
@@ -219,14 +215,14 @@ More information on how to use markdown can be found in [CommonMark][].
 
         <td>
           ```mdx chrome=no
-          ##### Five number signs…
+          ##### 숫자 기호 다섯...
           ```
         </td>
 
         <td>
           ```tsx chrome=no
           <>
-            <h5>Five number signs…</h5>
+            <h5>숫자 기호 다섯...</h5>
           </>
           ```
         </td>
@@ -237,14 +233,14 @@ More information on how to use markdown can be found in [CommonMark][].
 
         <td>
           ```mdx chrome=no
-          ###### Six number signs…
+          ###### 숫자 기호 여섯...
           ```
         </td>
 
         <td>
           ```tsx chrome=no
           <>
-            <h6>Six number signs…</h6>
+            <h6>숫자 기호 여섯...</h6>
           </>
           ```
         </td>
@@ -255,7 +251,7 @@ More information on how to use markdown can be found in [CommonMark][].
 
         <td>
           ```mdx chrome=no
-          Three asterisks for a thematic break:
+          주제 구분을 위한 세 개의 별표:
 
           ***
           ```
@@ -264,7 +260,7 @@ More information on how to use markdown can be found in [CommonMark][].
         <td>
           ```tsx chrome=no
           <>
-            <p>Three asterisks for a thematic break:</p>
+            <p>주제 구분을 위한 세 개의 별표:</p>
             <hr />
           </>
           ```
@@ -276,14 +272,14 @@ More information on how to use markdown can be found in [CommonMark][].
 
         <td>
           ```mdx chrome=no
-          ![Alt text](/logo.png "title")
+          ![대체 텍스트](/logo.png "제목")
           ```
         </td>
 
         <td>
           ```tsx chrome=no
           <>
-            <p><img src="/logo.png" alt="Alt text" title="title" /></p>
+            <p><img src="/logo.png" alt="대체 텍스트" title="제목" /></p>
           </>
           ```
         </td>
@@ -294,9 +290,9 @@ More information on how to use markdown can be found in [CommonMark][].
 
         <td>
           ```mdx chrome=no
-          * asterisks for unordered items
+          * 순서 없는 항목을 위한 별표
 
-          1. decimals and a dot for ordered items
+          1. 순서 있는 항목을 위한 숫자와 점
           ```
         </td>
 
@@ -304,10 +300,10 @@ More information on how to use markdown can be found in [CommonMark][].
           ```tsx chrome=no
           <>
             <ul>
-              <li>asterisks for unordered items</li>
+              <li>순서 없는 항목을 위한 별표</li>
             </ul>
             <ol>
-              <li>decimals and a dot for ordered items</li>
+              <li>순서 있는 항목을 위한 숫자와 점</li>
             </ol>
           </>
           ```
@@ -319,7 +315,7 @@ More information on how to use markdown can be found in [CommonMark][].
 
         <td>
           ```mdx chrome=no
-          1. decimals and a dot for ordered
+          1. 순서 있는 항목을 위한 숫자와 점
           ```
         </td>
 
@@ -327,7 +323,7 @@ More information on how to use markdown can be found in [CommonMark][].
           ```tsx chrome=no
           <>
             <ol>
-              <li>decimals and a dot for ordered</li>
+              <li>순서 있는 항목을 위한 숫자와 점</li>
             </ol>
           </>
           ```
@@ -339,14 +335,14 @@ More information on how to use markdown can be found in [CommonMark][].
 
         <td>
           ```mdx chrome=no
-          Just some text…
+          그냥 일반 텍스트...
           ```
         </td>
 
         <td>
           ```tsx chrome=no
           <>
-            <p>Just some text…</p>
+            <p>그냥 일반 텍스트...</p>
           </>
           ```
         </td>
@@ -358,7 +354,7 @@ More information on how to use markdown can be found in [CommonMark][].
         <td>
           ````mdx chrome=no
           ```tsx
-          backtick.fences('for blocks')
+          backtick.fences('블록용')
           ```
           ````
         </td>
@@ -366,7 +362,7 @@ More information on how to use markdown can be found in [CommonMark][].
         <td>
           ```tsx chrome=no
           <>
-            <pre><code className="language-javascript">backtick.fences('for blocks')
+            <pre><code className="language-javascript">backtick.fences('블록용')
             </code></pre>
           </>
           ```
@@ -378,14 +374,14 @@ More information on how to use markdown can be found in [CommonMark][].
 
         <td>
           ```mdx chrome=no
-          Two **asterisks** for strong.
+          강조를 위해 **별표 두 개**를 사용합니다.
           ```
         </td>
 
         <td>
           ```tsx chrome=no
           <>
-            <p>Two <strong>asterisks</strong> for strong.</p>
+            <p>강조를 위해 <strong>별표 두 개</strong>를 사용합니다.</p>
           </>
           ```
         </td>
@@ -396,7 +392,7 @@ More information on how to use markdown can be found in [CommonMark][].
 
         <td>
           ```mdx chrome=no
-          * asterisks for unordered
+          * 순서 없는 목록을 위한 별표
           ```
         </td>
 
@@ -404,7 +400,7 @@ More information on how to use markdown can be found in [CommonMark][].
           ```tsx chrome=no
           <>
             <ul>
-              <li>asterisks for unordered</li>
+              <li>순서 없는 목록을 위한 별표</li>
             </ul>
           </>
           ```
@@ -414,17 +410,16 @@ More information on how to use markdown can be found in [CommonMark][].
   </table>
 </div>
 
-The components you can overwrite use their standard HTML names.
-Normally, in markdown, those names are: `a`, `blockquote`, `br`, `code`, `em`,
+덮어쓸 수 있는 컴포넌트는 표준 HTML 이름을 사용합니다.
+일반적으로 마크다운에서 이러한 이름들은: `a`, `blockquote`, `br`, `code`, `em`,
 `h1`, `h2`, `h3`, `h4`, `h5`, `h6`, `hr`, `img`, `li`, `ol`, `p`, `pre`,
-`strong`, and `ul`.
-With [`remark-gfm`][gfm] ([see guide][guide-gfm]), you can also use: `del`,
-`input`, `section`, `sup`, `table`, `tbody`, `td`, `th`, `thead`, and `tr`.
-Other remark plugins that add support for new constructs and advertise that they
-work with rehype, will also work with MDX.
+`strong`, 그리고 `ul`입니다.
+[`remark-gfm`][gfm]을 사용하면 ([가이드 참조][guide-gfm]), 다음도 사용할 수 있습니다: `del`,
+`input`, `section`, `sup`, `table`, `tbody`, `td`, `th`, `thead`, 그리고 `tr`.
+rehype와 함께 작동한다고 광고하는 새로운 구조를 지원하는 다른 remark 플러그인들도 MDX와 함께 작동할 것입니다.
 
-More information on components is available in
-[¶ Components in § Using MDX][components].
+컴포넌트에 대한 자세한 정보는
+[¶ MDX 사용하기의 컴포넌트 섹션][components]에서 확인할 수 있습니다.
 
 [gfm]: https://github.com/remarkjs/remark-gfm
 

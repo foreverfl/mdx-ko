@@ -43,13 +43,13 @@ export function NavigationSite(properties) {
 
   return (
     <nav className="navigation" aria-label="Site navigation">
-      <div id="banner">Ceasefire now! 🕊️</div>
+      <div id="banner">당장 전쟁을 멈추세요! 🕊️</div>
       <a
         href="#start-of-content"
         id="start-of-navigation"
         className="skip-to-content"
       >
-        Skip to content
+        본문으로 건너뛰기
       </a>
       <div className="navigation-primary">
         <a href="/" aria-current={name === '/' ? 'page' : undefined}>

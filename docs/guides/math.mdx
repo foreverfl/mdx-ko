@@ -9,26 +9,22 @@ export const info = {
 }
 export const navSortSelf = 3
 
-# Math
+# 수학
 
-This guide explores how to support math (LaTeX) in MDX. {/* more */}
-MDX supports standard markdown syntax ([CommonMark][]).
-That means math is not supported by default.
-Math can be enabled by using a remark plugin: [`remark-math`][remark-math],
-combined with a rehype plugin: either
-[`rehype-katex`][rehype-katex] (KaTeX) or [`rehype-mathjax`][rehype-mathjax]
-(MathJax).
-Like other remark and rehype plugins, they can be passed in [`remarkPlugins`
-and `rehypePlugins`, respectively, in `ProcessorOptions`][processor-options].
-More info on plugins is available in [§ Extending MDX][extend]
+이 가이드는 MDX에서 수학(LaTeX)을 지원하는 방법을 탐구합니다. {/* more */}
+MDX는 표준 마크다운 구문([CommonMark][])을 지원합니다.
+이는 수학이 기본적으로 지원되지 않음을 의미합니다.
+수학은 remark 플러그인인 [`remark-math`][remark-math]와 rehype 플러그인인 [`rehype-katex`][rehype-katex] (KaTeX) 또는 [`rehype-mathjax`][rehype-mathjax] (MathJax) 중 하나를 조합하여 활성화할 수 있습니다.
+다른 remark 및 rehype 플러그인과 마찬가지로, 이들은 [`ProcessorOptions`의 `remarkPlugins`와 `rehypePlugins`에 각각 전달][processor-options]될 수 있습니다.
+플러그인에 대한 자세한 정보는 [§ MDX 확장하기][extend]에서 확인할 수 있습니다.
 
-Say we have an MDX file like this:
+다음과 같은 MDX 파일이 있다고 가정해 봅시다:
 
 ```mdx path="example.mdx"
 # $$\sqrt{a^2 + b^2}$$
 ```
 
-The above MDX with math can be transformed with the following module:
+수학이 포함된 위의 MDX는 다음 모듈로 변환될 수 있습니다:
 
 ```js twoslash path="example.js"
 // @filename: example.js
@@ -50,7 +46,7 @@ console.log(
 ```
 
 <details>
-  <summary>Expand equivalent JSX</summary>
+  <summary>동등한 JSX 펼치기</summary>
 
   ```jsx path="output.jsx"
   <>
@@ -69,25 +65,22 @@ console.log(
 </details>
 
 <Note type="important">
-  **Important**: if you chose `rehype-katex`, you should also use `katex.css`
-  somewhere on the page to style math properly.
-  At the time of writing, the last version is:
+  **중요**: `rehype-katex`를 선택한 경우, 수학을 올바르게 스타일링하기 위해 페이지 어딘가에 `katex.css`도 사용해야 합니다.
+  이 글을 작성하는 시점의 최신 버전은 다음과 같습니다:
 
   ```html
   <!-- Get the latest one from: https://katex.org/docs/browser -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" integrity="sha384-wcIxkf4k558AjM3Yz3BBFQUbk/zgIYC2R0QpeeYb+TwlBVMrlgLqwRjRtGZiK7ww" crossorigin="anonymous">
   ```
 
-  To get the latest link to the stylesheet, go to [`katex docs`][katex docs].
+  스타일시트의 최신 링크를 얻으려면 [`katex docs`][katex docs]로 이동하세요.
 
   {/* to do: once in a while, get the latest. */}
 </Note>
 
 <Note type="info">
-  **Note:** see also
-  [`remark-mdx-math-enhanced`](https://github.com/goodproblems/remark-mdx-math-enhanced),
-  which you can use to support JavaScript expressions inside of math (such as to
-  access properties or to make calculations)
+  **참고:** [`remark-mdx-math-enhanced`](https://github.com/goodproblems/remark-mdx-math-enhanced)도 확인해 보세요.
+  이를 사용하면 수학 안에서 JavaScript 표현식(예: 속성에 접근하거나 계산을 수행하는 등)을 지원할 수 있습니다.
 </Note>
 
 [commonmark]: https://spec.commonmark.org/current/

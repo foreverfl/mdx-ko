@@ -7,25 +7,21 @@ export const info = {
 }
 export const navSortSelf = 5
 
-# Embed
+# 임베드
 
-This guide explores how to embed things like tweets, gists or codepens in
-markdown. {/* more */}
-MDX supports standard markdown syntax ([CommonMark][]).
-It does not support embeds by default.
+이 가이드는 tweet, gist 또는 codepen과 같은 것들을 마크다운에 임베드하는 방법을 탐구합니다. {/* more */}
+MDX는 표준 마크다운 구문([CommonMark][])을 지원합니다.
+기본적으로 임베드를 지원하지 않습니다.
 
-There are two ways to accomplish embeds: at compile time or at runtime.
-Doing it at compile time means the effort is spent upfront so that readers will
-have a fast experience as no requests have to be made on the client.
-Doing it at runtime gives more flexibility by moving the work to the client.
-This can result in a slow experience for readers though.
-It also depends on what framework you use (as in it’s specific to React, Preact,
-Vue, etc.)
+임베드를 구현하는 방법에는 두 가지가 있습니다: 컴파일 시간 또는 런타임에서 수행하는 것입니다.
+컴파일 시간에 수행하면 미리 작업을 수행하여 클라이언트에서 요청을 할 필요가 없기 때문에 독자들에게 빠른 경험을 제공할 수 있습니다.
+런타임에 수행하면 작업을 클라이언트로 이동시켜 더 많은 유연성을 제공합니다.
+하지만 이는 독자들에게 느린 경험을 제공할 수 있습니다.
+또한 사용하는 프레임워크에 따라 다릅니다(React, Preact, Vue 등에 특화됨).
 
-## Embeds at compile time
+## 컴파일 시간에 임베드
 
-You can use [`@remark-embedder/core`][remark-embedder] by doing something like
-this:
+[`@remark-embedder/core`][remark-embedder]를 다음과 같이 사용할 수 있습니다:
 
 ```js path="example.js"
 import {compile} from '@mdx-js/mdx'
@@ -58,7 +54,7 @@ console.log(
 ```
 
 <details>
-  <summary>Expand equivalent JSX</summary>
+  <summary>동등한 JSX 펼치기</summary>
 
   ```jsx path="output.jsx"
   <>
@@ -76,39 +72,39 @@ console.log(
   ```
 </details>
 
-## Embeds at run time
+## 런타임에 임베드
 
-You can use the React-specific [MDX Embed][mdx-embed] to embed things in MDX.
-Here is an example MDX file that uses a specific embed without `@mdx-js/react`:
+React에 특화된 [MDX Embed][mdx-embed]를 사용하여 MDX에 임베드할 수 있습니다.
+다음은 `@mdx-js/react` 없이 특정 임베드를 사용하는 MDX 파일의 예시입니다:
 
 ```mdx path="example.mdx"
 import {CodePen} from 'mdx-embed'
 
-Here’s a codepen, and some other blog post text.
+Here's a codepen, and some other blog post text.
 
 <CodePen codePenId="PNaGbb" />
 ```
 
 <details>
-  <summary>Expand equivalent JSX</summary>
+  <summary>동등한 JSX 펼치기</summary>
 
   ```jsx path="output.jsx"
   <>
-    <p>Here’s a codepen, and some other blog post text.</p>
+    <p>Here's a codepen, and some other blog post text.</p>
     <CodePen codePenId="PNaGbb" />
   </>
   ```
 </details>
 
-If you don’t want to use explicit imports in MDX files:
+MDX 파일에서 명시적 임포트를 사용하고 싶지 않다면:
 
 ```mdx path="example.mdx"
-Here’s a codepen, and some other blog post text.
+Here's a codepen, and some other blog post text.
 
 <CodePen codePenId="PNaGbb" />
 ```
 
-Then you can either pass all components:
+그런 다음 모든 컴포넌트를 전달할 수 있습니다:
 
 ```jsx path="example.jsx"
 import * as embeds from 'mdx-embed'
@@ -117,8 +113,7 @@ import Example from './example.mdx' // Assumes an integration is used to compile
 console.log(<Example components={...embeds} />)
 ```
 
-Or, if you’ve installed and configured [`@mdx-js/react`][mdx-react], you can
-also use `MDXEmbedProvider`:
+또는 [`@mdx-js/react`][mdx-react]를 설치하고 구성했다면 `MDXEmbedProvider`를 사용할 수도 있습니다:
 
 ```jsx path="example.jsx"
 import {MDXEmbedProvider} from 'mdx-embed'

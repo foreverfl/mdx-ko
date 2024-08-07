@@ -10,43 +10,37 @@ export const info = {
 }
 export const navSortSelf = 1
 
-# What is MDX?
+# MDX란 무엇인가?
 
-This article explains what the MDX format is.
-It shows how markdown, JSX, JavaScript expressions, and `import` and
-`export` statements in ESM can be used inside MDX. {/* more */}
-See [§ Getting started][start] for details on how to integrate MDX into your
-project.
-See [§ Using MDX][use] when you’re already all set up to use MDX.
+이 글은 MDX 형식이 무엇인지 설명합니다.
+마크다운, JSX, JavaScript 표현식, 그리고 ESM의 `import`와 `export` 문을 MDX 내에서 어떻게 사용할 수 있는지 보여줍니다. {/* more */}
+MDX를 프로젝트에 통합하는 방법에 대한 자세한 내용은 [§ 시작하기][start]를 참조하세요.
+이미 MDX를 사용할 준비가 되어 있다면 [§ MDX 사용하기][use]를 참조하세요.
 
-## Contents
+## 목차
 
-* [Prerequisites](#prerequisites)
-* [Markdown for the component era](#markdown-for-the-component-era)
-* [MDX syntax](#mdx-syntax)
-  * [Markdown](#markdown)
+* [전제 조건](#prerequisites)
+* [컴포넌트 시대를 위한 마크다운](#markdown-for-the-component-era)
+* [MDX 문법](#mdx-syntax)
+  * [마크다운](#markdown)
   * [JSX](#jsx)
-  * [Expressions](#expressions)
-  * [ESM](#esm)
-  * [Interleaving](#interleaving)
-* [Further reading](#further-reading)
+  * [표현식](#expressions)
+  * [ESM (ECMAScript Modules)](#esm)
+  * [혼합 사용](#interleaving)
+* [추가 읽을거리](#further-reading)
 
-## Prerequisites
+## 전제 조건
 
-To write and enjoy MDX, you should be familiar with both markdown
-(see this [cheat sheet and tutorial][commonmark-help] for help) and
-JavaScript (specifically [JSX][jsx-spec]).
+MDX를 작성하고 즐기기 위해서는 마크다운(도움이 필요하면 이 [튜토리얼][commonmark-help] 참조)과 JavaScript(특히 [JSX][jsx-spec])에 익숙해야 합니다.
 
-## Markdown for the component era
+## 컴포넌트 시대를 위한 마크다운
 
-MDX allows you to use JSX in your markdown content.
-You can import components, such as interactive charts or alerts, and embed them
-within your content.
-This makes writing long-form content with components a blast.
+MDX를 사용하면 마크다운 내용에 JSX를 사용할 수 있습니다.
+인터랙티브 차트나 알림과 같은 컴포넌트를 가져와 내용 안에 삽입할 수 있습니다.
+이로 인해 컴포넌트를 사용한 장문의 내용 작성이 매우 즐거워집니다.
 🚀
 
-More practically MDX can be explained as a format that combines markdown with
-JSX and looks as follows:
+더 실용적으로 MDX는 마크다운과 JSX를 결합한 형식으로 다음과 같이 설명할 수 있습니다:
 
 ```mdx
 # Hello, world!
@@ -56,47 +50,37 @@ JSX and looks as follows:
 </div>
 ```
 
-The heading and block quote are markdown, while those *HTML-like tags* are JSX.
-Markdown often feels more natural to type than HTML or JSX for common things
-like emphasis or headings.
-JSX is an extension to JavaScript that *looks* like HTML but makes it convenient
-to use components (reusable things).
+제목과 인용구는 마크다운이며, 이 *HTML과 유사한 태그들*은 JSX입니다.
+강조나 제목과 같은 일반적인 요소들은 HTML이나 JSX보다 마크다운으로 작성하는 것이 더 자연스럽게 느껴집니다.
+JSX는 JavaScript의 확장으로, HTML처럼 *보이지만* 컴포넌트(재사용 가능한 것들)를 편리하게 사용할 수 있게 해줍니다.
 
-This example uses `className` on the `<div>`.
-That’s because it was written for React and React expects classes that way.
-Other frameworks, such as Vue and Preact, expect classes to be defined
-differently, so note that there are some differences in how JSX has to be
-authored depending on what tools it’s used with.
+이 예제에서는 `<div>`에 `className`을 사용합니다.
+이는 React를 위해 작성되었기 때문이며, React는 이런 방식으로 클래스를 기대합니다.
+Vue나 Preact와 같은 다른 프레임워크에서는 클래스를 다르게 정의해야 하므로, 사용하는 도구에 따라 JSX 작성 방법에 약간의 차이가 있다는 점에 주의하세요.
 
-A few other features from JavaScript are supported in MDX as well: expressions
-in braces (`{1 + 1}`) and ESM (`import` and `export`).
+MDX에서는 JavaScript의 몇 가지 다른 기능도 지원됩니다: 중괄호 안의 표현식(`{1 + 1}`)과 ESM(`import`와 `export`)이 그것입니다.
 
-## MDX syntax
+## MDX 문법
 
 <Note type="info">
-  **Note**:
-  You don’t have to use this syntax with `@mdx-js/*` packages.
-  Or use it always.
-  If you’re using a bundler integration you can change between MDX and
-  markdown through the file extension (`.mdx` vs. `.md`).
-  Alternatively, `options.format` can be used.
+  **참고**:
+  `@mdx-js/*` 패키지와 함께 이 문법을 사용할 필요는 없습니다.
+  또는 항상 사용할 필요도 없습니다.
+  번들러 통합을 사용하고 있다면 파일 확장자(`.mdx` 대 `.md`)를 통해 MDX와 마크다운 사이를 전환할 수 있습니다.
+  또는 `options.format`을 사용할 수 있습니다.
 </Note>
 
-The MDX syntax combines markdown with JSX.
-This gives us something along the lines of literate programming.
-It also gives us an odd mix of two languages: markdown is **whitespace
-sensitive** and **forgiving** (what you type may not exactly work but it
-won’t crash) whereas JavaScript is **whitespace insensitive** and
-**unforgiving** (it does crash on typos).
+MDX 문법은 마크다운과 JSX를 결합합니다.
+이는 문학적 프로그래밍(literate programming)과 비슷한 것을 제공합니다.
+또한 두 언어의 독특한 조합을 제공합니다: 마크다운은 **공백에 민감**하고 **관대**합니다(입력한 내용이 정확히 작동하지 않을 수 있지만 충돌하지는 않습니다). 반면 JavaScript는 **공백에 민감하지 않고** **엄격**합니다(오타가 있으면 충돌합니다).
 
-Weirdly enough we quite like how they combine!
+이상하게도 우리는 이 둘의 조합을 꽤 좋아합니다!
 
-### Markdown
+### 마크다운
 
-Markdown often feels more natural to type than HTML or JSX for common things
-like emphasis or headings.
-Markdown typically looks more like what’s intended and is terser.
-Instead of the following HTML:
+강조나 제목과 같은 일반적인 요소들은 HTML이나 JSX보다 마크다운으로 작성하는 것이 더 자연스럽게 느껴집니다.
+마크다운은 일반적으로 의도한 바와 더 비슷하게 보이며 더 간결합니다.
+다음과 같은 HTML 대신:
 
 ```html
 <blockquote>
@@ -104,13 +88,13 @@ Instead of the following HTML:
 </blockquote>
 ```
 
-You can write the equivalent in markdown (or MDX) like so:
+마크다운(또는 MDX)에서는 다음과 같이 동등한 내용을 작성할 수 있습니다:
 
 ```md
-> A blockquote with *some* emphasis.
+> *일부* 강조가 있는 인용구.
 ```
 
-MDX supports standard markdown by default ([CommonMark][]):
+MDX는 기본적으로 표준 마크다운([CommonMark][])을 지원합니다:
 
 ````md
 # Heading (rank 1)
@@ -140,17 +124,15 @@ a [link](https://example.com), an ![image](./image.png), some *emphasis*,
 something **strong**, and finally a little `code()`.
 ````
 
-Nonstandard markdown features (such as GFM, frontmatter, math, syntax
-highlighting) can be enabled with plugins (see
-[¶ Using plugins][using-plugins]).
+비표준 마크다운 기능(GFM, 프론트매터, 수학, 구문 강조 등)은 플러그인을 통해 활성화할 수 있습니다([¶ 플러그인 사용하기][using-plugins] 참조).
 
-Some markdown features don’t work in MDX:
+MDX에서 작동하지 않는 일부 마크다운 기능들:
 
-* Indented code does not work in MDX:
+* 들여쓰기된 코드는 MDX에서 작동하지 않습니다:
   ```mdx
-      console.log(1) // this is a paragraph in MDX!
+      console.log(1) // 이것은 MDX에서 단락입니다!
   ```
-  The reason for that is so you can nicely indent your components:
+  그 이유는 컴포넌트를 깔끔하게 들여쓰기할 수 있도록 하기 위함입니다:
   ```mdx
   <main>
     <article>
@@ -158,60 +140,56 @@ Some markdown features don’t work in MDX:
     </article>
   </main>
   ```
-* Autolinks do not work in MDX.
-  The reason is that they can be indistinguishable from JSX (for example:
-  `<svg:rect>`) and we prefer being explicit.
-  If you want links, use full links:
-  `[descriptive text](https://and-the-link-here.com)`
-* HTML syntax doesn’t work in MDX as it’s replaced by JSX (`<img>` to
-  `<img />`).
-  Instead of HTML comments, you can use JavaScript comments in braces:
-  `{/* comment! */}`
-* Unescaped left angle bracket / less than (`<`) and left curly brace (`{`)
-  have to be escaped: `\<` or `\{` (or use expressions: `{'<'}`, `{'{'}`)
+* 자동 링크는 MDX에서 작동하지 않습니다.
+  그 이유는 JSX와 구별하기 어려울 수 있기 때문입니다(예: `<svg:rect>`).
+  우리는 명시적인 것을 선호합니다.
+  링크를 원한다면 전체 링크를 사용하세요:
+  `[설명 텍스트](https://여기에-링크-주소를-넣으세요.com)`
+* HTML 구문은 JSX로 대체되기 때문에 MDX에서 작동하지 않습니다(`<img>`에서 `<img />`로).
+  HTML 주석 대신 중괄호 안에 JavaScript 주석을 사용할 수 있습니다:
+  `{/* 주석! */}`
+* 이스케이프되지 않은 왼쪽 꺾쇠 괄호 / 미만 기호(`<`)와 왼쪽 중괄호(`{`)는
+  이스케이프해야 합니다: `\<` 또는 `\{` (또는 표현식 사용: `{'<'}`, `{'{'}`)
 
-More on how MDX differs from markdown is
-[documented here](https://github.com/micromark/mdx-state-machine#72-deviations-from-markdown).
+MDX가 마크다운과 어떻게 다른지에 대한 자세한 내용은
+[여기에 문서화되어 있습니다](https://github.com/micromark/mdx-state-machine#72-deviations-from-markdown).
 
 ### JSX
 
-[JSX][] is an extension to JavaScript that *looks* like HTML but makes it
-convenient to use components (reusable things).
-JSX is typically combined with a frontend framework like React, Preact, or Vue.
-These frameworks add support for components, which let you change repeating
-things like the following markup:
+[JSX][]는 HTML처럼 *보이지만* 컴포넌트(재사용 가능한 것들)를 편리하게 사용할 수 있게 해주는 JavaScript의 확장입니다.
+JSX는 일반적으로 React, Preact, Vue와 같은 프론트엔드 프레임워크와 함께 사용됩니다.
+이러한 프레임워크들은 컴포넌트 지원을 추가하여 다음과 같은 반복적인 마크업을:
 
 ```html
 <h2>Hello, Venus!</h2>
 <h2>Hello, Mars!</h2>
 ```
 
-…to JSX (or MDX) like this:
+JSX (또는 MDX)에서 다음과 같이 변경할 수 있습니다:
 
 ```mdx
 <Welcome name="Venus" />
 <Welcome name="Mars" />
 ```
 
-JSX is good for **components**.
-It makes repeating things more clear and allows for separation of concerns.
-MDX supports JSX syntax.
-The following looks a lot like HTML:
+JSX는 **컴포넌트**에 좋습니다.
+반복되는 것들을 더 명확하게 만들고 관심사의 분리를 가능하게 합니다.
+MDX는 JSX 구문을 지원합니다.
+다음은 HTML과 매우 비슷해 보입니다:
 
 ```mdx
-<h1>Heading!</h1>
+<h1>제목!</h1>
 
-<abbr title="HyperText Markup Language">HTML</abbr> is a lovely language.
+<abbr title="HyperText Markup Language">HTML</abbr>은 lovely한 언어입니다.
 
 <section>
-  And here is *markdown* in **JSX**!
+  그리고 여기 **JSX**에서 *마크다운*이 있습니다!
 </section>
 ```
 
-But as previously mentioned you can use components too.
-Note that components must be defined.
-You can import them, define them locally, or pass them in later (see
-[§ Using MDX][use]):
+하지만 앞서 언급했듯이 컴포넌트도 사용할 수 있습니다.
+컴포넌트는 정의되어야 한다는 점에 유의하세요.
+가져오거나, 로컬에서 정의하거나, 나중에 전달할 수 있습니다([§ MDX 사용하기][use] 참조):
 
 ```mdx
 <MyComponent id="123" />
@@ -227,20 +205,18 @@ the `myComponents` object: <myComponents.thisOne />
 />
 ```
 
-There are a few edge cases
-[where MDX differs from JSX](https://github.com/micromark/mdx-state-machine#73-deviations-from-jsx).
+[MDX가 JSX와 다른 몇 가지 엣지 케이스](https://github.com/micromark/mdx-state-machine#73-deviations-from-jsx)가 있습니다.
 
-### Expressions
+### 표현식
 
-MDX also supports JavaScript expressions inside curly braces:
+MDX는 또한 중괄호 안에 JavaScript 표현식을 지원합니다:
 
 ```mdx
-Two 🍰 is: {Math.PI * 2}
+두 개의 🍰는: {Math.PI * 2}입니다
 ```
 
-Expressions can contain whole JavaScript programs as long as they’re
-(wrapped in) an expression that evaluates to something that can be rendered.
-You can use an [IIFE][] like so:
+표현식은 렌더링할 수 있는 것으로 평가되는 표현식(이나 감싸진 표현식)인 한 전체 JavaScript 프로그램을 포함할 수 있습니다.
+다음과 같이 [IIFE][]를 사용할 수 있습니다:
 
 ```mdx
 {(function () {
@@ -258,16 +234,16 @@ You can use an [IIFE][] like so:
 })()}
 ```
 
-Expressions can be empty or contain just a comment:
+표현식은 비어 있거나 주석만 포함할 수 있습니다:
 
 ```mdx
 {/* A comment! */}
 ```
 
-### ESM
+### ESM (ECMAScript Modules)
 
-MDX supports `import` and `export` statements from JavaScript as well.
-These ESM features can be used within MDX to define things:
+MDX는 JavaScript의 `import`와 `export` 문도 지원합니다.
+이러한 ESM 기능은 MDX 내에서 다음과 같이 사용하여 정의할 수 있습니다:
 
 ```mdx
 import {External} from './some/place.js'
@@ -277,7 +253,7 @@ export const Local = properties => <span style={{color: 'red'}} {...properties} 
 An <External>external</External> component and a <Local>local one</Local>.
 ```
 
-ESM can also be used for non-components (data):
+ESM은 컴포넌트가 아닌 것들(데이터)에도 사용할 수 있습니다:
 
 ```mdx
 import {Chart} from './chart.js'
@@ -287,18 +263,16 @@ export const pi = 3.14
 <Chart data={population} label={'Something with ' + pi} />
 ```
 
-### Interleaving
+### 혼합 사용
 
-You can use markdown “inlines” but not “blocks” inside JSX if the text and tags
-are on the same line:
+텍스트와 태그가 같은 줄에 있다면 JSX 안에서 마크다운 "인라인"은 사용할 수 있지만 "블록"은 사용할 수 없습니다:
 
 ```mdx
 <div># this is not a heading but *this* is emphasis</div>
 ```
 
-Text and tags on one line don’t produce blocks so they don’t produce `<p>`s
-either.
-On separate lines, they do:
+한 줄에 있는 텍스트와 태그는 블록을 생성하지 않으므로 `<p>`도 생성하지 않습니다.
+별도의 줄에 있으면 생성됩니다:
 
 ```mdx
 <div>
@@ -306,9 +280,9 @@ On separate lines, they do:
 </div>
 ```
 
-We differentiate using this rule (same line or not).
-Not based on semantics of elements in HTML.
-So you *can* build incorrect HTML (which you shouldn’t):
+우리는 이 규칙(같은 줄에 있는지 아닌지)을 사용하여 구분합니다.
+HTML의 요소 의미에 따라 구분하지 않습니다.
+따라서 잘못된 HTML을 만들 수 있습니다(하지만 그렇게 하면 안 됩니다):
 
 ```mdx
 <h1 className="main">
@@ -318,9 +292,8 @@ So you *can* build incorrect HTML (which you shouldn’t):
 <h1 className="main">Do this: an `h1` with `code`</h1>
 ```
 
-It’s not possible to wrap “blocks” if text and tags are on the same line but the
-corresponding opening and closing tags are in different blocks
-(so this is invalid!):
+텍스트와 태그가 같은 줄에 있지만 해당 여는 태그와 닫는 태그가 다른 블록에 있는 경우 "블록"을 감싸는 것은 불가능합니다
+(따라서 이것은 유효하지 않습니다!):
 
 ```mdx-invalid chrome=no
 Welcome! <a href="about.html">
@@ -330,18 +303,16 @@ This is home of...
 # The Falcons!</a>
 ```
 
-To parse markdown, we first have to divide it into “blocks”.
-So in this case two paragraphs and a heading.
-Leaving an opening `a` tag in the first paragraph and a closing `a` tag in
-the heading.
-Which causes an error as it is misnested.
+마크다운을 파싱하려면 먼저 "블록"으로 나눠야 합니다.
+따라서 이 경우 두 개의 단락과 하나의 제목으로 나뉩니다.
+첫 번째 단락에 여는 `a` 태그를 남기고 제목에 닫는 `a` 태그를 남깁니다.
+이는 잘못 중첩되어 오류를 발생시킵니다.
 
-## Further reading
+## 추가 읽을거리
 
-* If you want to use MDX in your project, see [§ Getting started][start];
-  see [§ Using MDX][use] when you’re already all set up
-* If you’re getting errors when working with the format, see
-  [§ Troubleshooting MDX][trouble]
+* 프로젝트에서 MDX를 사용하고 싶다면 [§ 시작하기][start]를 참조하세요;
+  이미 모든 설정이 완료되었다면 [§ MDX 사용하기][use]를 참조하세요
+* 형식 작업 중 오류가 발생하면 [§ MDX 문제 해결][trouble]을 참조하세요
 
 [commonmark]: https://commonmark.org
 
